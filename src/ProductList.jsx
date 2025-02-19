@@ -7,8 +7,13 @@ function ProductList() {
   const [showCart, setShowCart] = useState(false);
   const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
   const [addedToCart, setAddedToCart] = useState({});
-  const car = useSelector((state) => state.cart);
+  const cartItems = useSelector((state) => state.cart.items);
+  const totalQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
   const dispatch = useDispatch();
+
   const plantsArray = [
     {
       category: "Air Purifying Plants",
@@ -341,6 +346,22 @@ function ProductList() {
                     id="mainIconPathAttribute"
                   ></path>
                 </svg>
+                {totalQuantity > 0 && (
+                  <span
+                    style={{
+                      position: "absolute",
+                      top: "5px",
+                      right: "-5px",
+                      background: "red",
+                      color: "white",
+                      fontSize: "16px",
+                      borderRadius: "50%",
+                      padding: "5px 10px",
+                    }}
+                  >
+                    {totalQuantity}
+                  </span>
+                )}
               </h1>
             </a>
           </div>
