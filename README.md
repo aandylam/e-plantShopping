@@ -1,1 +1,1 @@
-# coding-project-template
+# Nursery Shopping Cart Demo Web page
