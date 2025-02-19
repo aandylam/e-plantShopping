@@ -387,8 +387,17 @@ function ProductList() {
                     <button
                       className="product-button"
                       onClick={() => handleAddToCart(plant)}
+                      disabled={addedToCart[plant.name]}
+                      style={{
+                        backgroundColor: addedToCart[plant.name]
+                          ? "gray"
+                          : "red",
+                        cursor: addedToCart[plant.name]
+                          ? "not-allowed"
+                          : "pointer",
+                      }}
                     >
-                      Add to Cart
+                      {addedToCart[plant.name] ? "Added" : "Add to Cart"}
                     </button>
                   </div>
                 ))}
